@@ -127,6 +127,7 @@ function confimar(){
         if(etapas[etapaAtual] !== undefined){
             comecarEtapa();
         }else {
+            document.getElementById("sound").play();
             document.querySelector('.tela').innerHTML = '<div class="aviso--gigante pisca">FIM</div>';
             console.log(votos);
         }
