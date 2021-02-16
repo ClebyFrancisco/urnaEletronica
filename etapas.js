@@ -38,20 +38,22 @@ let etapas = [
         numeros: 2,
         candidatos: [
             {
-                numero: 13,
+                numero: '13',
                 nome: 'HADDAD',
                 partido: 'ABC',
                 fotos: [
-                    {url:'38111', legenda:' PREFEITO'}
+                    {url:'festa-junina.png', legenda:' PREFEITO'},
+                    {url:'astronauta.png', legenda:'VICE-PREFEITO', small:true}
                 ]
 
             },
             {
-                numero: 17,
+                numero: '17',
                 nome: 'BOLSONARO',
                 partido: 'DEF',
                 fotos: [
-                    {url:'17', legenda:' PREFEITO'}
+                    {url:'musica.png', legenda:' PREFEITO'},
+                    {url:'golfe.png', legenda:'VICE-PREFEITO', small:true}
                 ]
 
             },

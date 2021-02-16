@@ -12,6 +12,7 @@ let efButton = document.querySelector('.teclado--botao')
 let etapaAtual = 0;
 let numero = '';
 let votoBranco = false;
+let votos = [];
 
 function comecarEtapa(){
     let etapa = etapas[etapaAtual];
@@ -52,10 +53,15 @@ function atualizaInterface(){
         descricao.innerHTML = `NOME: ${candidato.nome}</br> PARTIDO: ${candidato.partido}`;
 
         let fotosHtml = '';
-        for(let i in candidato.fotos){fotosHtml += `<div class="d-1-image"><img src="./img/${candidato.fotos[i].url}" alt=""/> ${candidato.fotos[i].legenda}</div>`}
-        
+        for(let i in candidato.fotos){
+            if(candidato.fotos[i].small){
+            fotosHtml += `<div class="d-1-image small"><img src="./img/${candidato.fotos[i].url}" alt=""/> ${candidato.fotos[i].legenda}</div>`
+
+        }else {fotosHtml += `<div class="d-1-image"><img src="./img/${candidato.fotos[i].url}" alt=""/> ${candidato.fotos[i].legenda}</div>`}
+    }
         lateral.innerHTML = fotosHtml;
-    }else {
+    }
+    else {
         seuVotoPara.style.display = 'block';
         aviso.style.display = 'block';
         descricao.innerHTML = '<div class="aviso--grande pisca">VOTO NULO</div>';
@@ -98,7 +104,33 @@ function corrige(){
     comecarEtapa();
 }
 function confimar(){
-    alert("clicou em CONFIMAR");
+    let etapa = etapas[etapaAtual];
+
+    let votoConfirmado = false;
+
+    if( votoBranco === true){
+        votoConfirmado = true;
+        votos.push({
+            etapa: etapas[etapaAtual].titulo,
+            voto: 'Branco'
+        });
+    } else if(numero.length === etapa.numeros){
+        votoConfirmado = true;
+        votos.push({
+            etapa: etapas[etapaAtual].titulo,
+            voto: numero
+        });
+    }
+
+    if(votoConfirmado){
+        etapaAtual++;
+        if(etapas[etapaAtual] !== undefined){
+            comecarEtapa();
+        }else {
+            document.querySelector('.tela').innerHTML = '<div class="aviso--gigante pisca">FIM</div>';
+            console.log(votos);
+        }
+    }
 
 }
 

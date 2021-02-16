@@ -130,6 +130,7 @@ body {
 }
 .d-1-image.small {
     width: 80%;
+    
     font-size: 12px;
 }
 
@@ -142,5 +143,14 @@ body {
 .aviso--grande {
     font-size: 40px;
     font-weight: bold;
+}
+.aviso--gigante {
+    font-size: 70px;
+    font-weight: bold;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
